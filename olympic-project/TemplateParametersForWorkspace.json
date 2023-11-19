@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "olympic-project"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"LS_Sink_Csv_accountKey": {
+			"value": ""
+		},
+		"LS_Sink_bronze_accountKey": {
+			"value": ""
+		},
+		"olympic-project-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:olympic-project.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://olympicstorage.dfs.core.windows.net/"
+		},
+		"LS_Sink_Csv_properties_typeProperties_url": {
+			"value": "https://olympicstorage.dfs.core.windows.net/"
+		},
+		"LS_Sink_bronze_properties_typeProperties_url": {
+			"value": "https://olympicstorage.dfs.core.windows.net/"
+		},
+		"LS_Source_Http_properties_typeProperties_url": {
+			"value": "@{linkedService().baseURL}"
+		},
+		"olympic-project-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://olympicstorage.dfs.core.windows.net"
+		}
+	}
+}
