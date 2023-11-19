@@ -1,0 +1,29 @@
+{
+	"name": "DS_Json",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "olympic.json",
+				"fileSystem": "demo"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"folder": {
+					"type": "string"
+				},
+				"data": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
