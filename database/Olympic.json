@@ -1,0 +1,22 @@
+{
+	"name": "Olympic",
+	"properties": {
+		"Name": "Olympic",
+		"EntityType": "DATABASE",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"IsSyMSCDMDatabase": true
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://demo@olympicstorage.dfs.core.windows.net/gold",
+			"Properties": {
+				"FormatType": "parquet",
+				"LinkedServiceName": "olympic-project-WorkspaceDefaultStorage"
+			}
+		}
+	},
+	"type": "DATABASE"
+}
