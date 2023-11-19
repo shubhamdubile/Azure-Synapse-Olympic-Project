@@ -190,6 +190,42 @@
 								}
 							]
 						}
+					},
+					{
+						"name": "Bronze to Silver",
+						"type": "SynapseNotebook",
+						"dependsOn": [
+							{
+								"activity": "ForEach to load data",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebook": {
+								"referenceName": "bronze to silver",
+								"type": "NotebookReference"
+							},
+							"snapshot": true,
+							"sparkPool": {
+								"referenceName": "SparkPool",
+								"type": "BigDataPoolReference"
+							},
+							"executorSize": "Medium",
+							"conf": {
+								"spark.dynamicAllocation.enabled": false
+							},
+							"driverSize": "Medium"
+						}
 					}
 				],
 				"policy": {
@@ -204,6 +240,8 @@
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/datasets/DS_Json')]",
+				"[concat(variables('workspaceId'), '/notebooks/bronze to silver')]",
+				"[concat(variables('workspaceId'), '/bigDataPools/SparkPool')]",
 				"[concat(variables('workspaceId'), '/datasets/DS_Source_http')]",
 				"[concat(variables('workspaceId'), '/datasets/DS_Sink_bronze2')]"
 			]
@@ -545,7 +583,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "2a83a882-bd79-497a-b33d-d858ca09e376"
+						"spark.autotune.trackingId": "2d4fc45b-532e-4f6a-a9ac-24547d9b46a5"
 					}
 				},
 				"metadata": {
@@ -570,8 +608,7 @@
 						"sparkVersion": "3.3",
 						"nodeCount": 10,
 						"cores": 4,
-						"memory": 28,
-						"automaticScaleJobs": false
+						"memory": 28
 					},
 					"sessionKeepAliveTimeout": 30
 				},
